@@ -226,16 +226,16 @@ class PayrollForm extends React.Component {
                 salary: this.state.salary,
                 startDate: this.state.startDate,
                 note: this.state.note
-              }
-              new EmployeeService().addEmployee(employeeObject)
-              .then(data => {
-                // alert("Employee Added Successfully!!!\n" + JSON.stringify(data))
-              }).catch(error => {
-                 alert("Error while adding Employee!!!\nError : " + error);
-              })
-              this.reset();
             }
-          }
+            new EmployeeService().addEmployee(employeeObject)
+                .then(data => {
+                    alert("Employee Added Successfully!!!\n" + JSON.stringify(data))
+                }).catch(error => {
+                    alert("Error while adding Employee!!!\nError : " + error);
+                })
+            this.reset();
+        }
+    }
     reset = () => {
         this.setState({ ...initialState });
     }

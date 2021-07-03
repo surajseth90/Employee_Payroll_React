@@ -1,40 +1,51 @@
 {
-    "employee": [
-      {
-        "id": 3,
-        "_name": "Suraj gupta",
-        "_profile": "..\\assets\\profile\\Ellipse -8.png",
-        "_gender": "male",
-        "_department": [
-          "engineer"
-        ],
-        "_salary": "500000",
-        "_startDate": null,
-        "_notes": "first job"
-      },
-      {
-        "id": 4,
-        "_name": "Rohit rathore",
-        "_profile": "..\\assets\\profile\\Ellipse -8.png",
-        "_gender": "male",
-        "_department": [
-          "hr"
-        ],
-        "_salary": "729300",
-        "_startDate": "2020-06-02T18:30:00.000Z",
-        "_notes": "got chill"
-      },
-      {
-        "id": 5,
-        "_name": "Sonali Rathore",
-        "_profile": "..\\assets\\profile\\Ellipse 1.png",
-        "_gender": "female",
-        "_department": [
-          "engineer"
-        ],
-        "_salary": "1100000",
-        "_startDate": "2020-04-30T18:30:00.000Z",
-        "_notes": "her dream job"
-      }
-    ]
-  }
+  "employee": [
+    {
+      "id": 3,
+      "_name": "Suraj gupta",
+      "_profile": "..\\assets\\profile\\Ellipse -8.png",
+      "_gender": "male",
+      "_department": [
+        "engineer"
+      ],
+      "_salary": "500000",
+      "_startDate": null,
+      "_notes": "first job"
+    },
+    {
+      "id": 4,
+      "_name": "Rohit rathore",
+      "_profile": "..\\assets\\profile\\Ellipse -8.png",
+      "_gender": "male",
+      "_department": [
+        "hr"
+      ],
+      "_salary": "729300",
+      "_startDate": "2020-06-02T18:30:00.000Z",
+      "_notes": "got chill"
+    },
+    {
+      "id": 5,
+      "_name": "Sonali Rathore",
+      "_profile": "..\\assets\\profile\\Ellipse 1.png",
+      "_gender": "female",
+      "_department": [
+        "engineer"
+      ],
+      "_salary": "1100000",
+      "_startDate": "2020-04-30T18:30:00.000Z",
+      "_notes": "her dream job"
+    },
+    {
+      "id": 6,
+      "name": "Suraj gupta ji",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "HR"
+      ],
+      "salary": "438500",
+      "startDate": "2019-12-31T18:30:00.000Z"
+    }
+  ]
+}

@@ -46,6 +46,17 @@
       ],
       "salary": "438500",
       "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 7,
+      "name": "Kirti gupta",
+      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
+      "gender": "female",
+      "departments": [
+        "Sales"
+      ],
+      "salary": "623200",
+      "startDate": "2019-12-31T18:30:00.000Z"
     }
   ]
 }

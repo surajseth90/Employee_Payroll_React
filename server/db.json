@@ -1,30 +1,8 @@
 {
   "employee": [
     {
-      "id": 10,
-      "name": "Suraj gupta",
-      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
-      "gender": "male",
-      "departments": [
-        "HR"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
       "id": 11,
       "name": "Suraj gupta",
-      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
-      "gender": "male",
-      "departments": [
-        "Sales"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 12,
-      "name": "Rohit rathore",
       "profilePicture": "../../assets/profile-images/Ellipse -3.png",
       "gender": "male",
       "departments": [
@@ -51,26 +29,6 @@
       "gender": "female",
       "departments": [
         "Finance"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 15,
-      "name": "",
-      "profilePicture": "",
-      "gender": "",
-      "departments": [],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 16,
-      "name": "Vivek",
-      "profilePicture": "../../assets/profile-images/Ellipse -5.png",
-      "gender": "male",
-      "departments": [
-        "HR"
       ],
       "salary": 200000,
       "startDate": "2019-12-31T18:30:00.000Z"
@@ -118,38 +76,6 @@
         "Finance"
       ],
       "salary": "1000000",
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 21,
-      "name": "Suraj Gupta",
-      "profilePicture": "",
-      "gender": "female",
-      "departments": [],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 22,
-      "name": "Suraj gupta",
-      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
-      "gender": "female",
-      "departments": [
-        "Finance",
-        "Engineer"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 23,
-      "name": "Suraj gupta",
-      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
-      "gender": "male",
-      "departments": [
-        "HR"
-      ],
-      "salary": 200000,
       "startDate": "2019-12-31T18:30:00.000Z"
     }
   ]

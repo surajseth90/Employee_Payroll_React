@@ -68,3 +68,7 @@ td img {
 .editIcon:hover{
   cursor: pointer;
 }
+
+.deleteIcon:hover{
+  cursor: pointer;
+}

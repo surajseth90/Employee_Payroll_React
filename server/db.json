@@ -1,61 +1,144 @@
 {
   "employee": [
     {
-      "id": 3,
-      "_name": "Suraj gupta",
-      "_profile": "..\\assets\\profile\\Ellipse -8.png",
-      "_gender": "male",
-      "_department": [
-        "engineer"
-      ],
-      "_salary": "500000",
-      "_startDate": null,
-      "_notes": "first job"
-    },
-    {
-      "id": 4,
-      "_name": "Rohit rathore",
-      "_profile": "..\\assets\\profile\\Ellipse -8.png",
-      "_gender": "male",
-      "_department": [
-        "hr"
-      ],
-      "_salary": "729300",
-      "_startDate": "2020-06-02T18:30:00.000Z",
-      "_notes": "got chill"
-    },
-    {
-      "id": 5,
-      "_name": "Sonali Rathore",
-      "_profile": "..\\assets\\profile\\Ellipse 1.png",
-      "_gender": "female",
-      "_department": [
-        "engineer"
-      ],
-      "_salary": "1100000",
-      "_startDate": "2020-04-30T18:30:00.000Z",
-      "_notes": "her dream job"
-    },
-    {
-      "id": 6,
-      "name": "Suraj gupta ji",
+      "id": 10,
+      "name": "Suraj gupta",
       "profilePicture": "../../assets/profile-images/Ellipse -3.png",
       "gender": "male",
       "departments": [
         "HR"
       ],
-      "salary": "438500",
+      "salary": 200000,
       "startDate": "2019-12-31T18:30:00.000Z"
     },
     {
-      "id": 7,
+      "id": 11,
+      "name": "Suraj gupta",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "Sales"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 12,
+      "name": "Rohit rathore",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "Sales"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 13,
+      "name": "Sonali rathore",
+      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
+      "gender": "female",
+      "departments": [
+        "Engineer"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 14,
+      "name": "Rohit rathore",
+      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
+      "gender": "female",
+      "departments": [
+        "Finance"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 15,
+      "name": "",
+      "profilePicture": "",
+      "gender": "",
+      "departments": [],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 16,
+      "name": "Vivek",
+      "profilePicture": "../../assets/profile-images/Ellipse -5.png",
+      "gender": "male",
+      "departments": [
+        "HR"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 17,
       "name": "Kirti gupta",
+      "profilePicture": "../../assets/profile-images/Ellipse -7.png",
+      "gender": "female",
+      "departments": [
+        "Finance"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 18,
+      "name": "Pooja gupta",
+      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
+      "gender": "female",
+      "departments": [
+        "Others"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 19,
+      "name": "Versha",
       "profilePicture": "../../assets/profile-images/Ellipse -4.png",
       "gender": "female",
       "departments": [
         "Sales"
       ],
-      "salary": "623200",
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 20,
+      "name": "Raju seth",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "Sales",
+        "Finance"
+      ],
+      "salary": "1000000",
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 21,
+      "name": "Suraj Gupta",
+      "profilePicture": "",
+      "gender": "female",
+      "departments": [],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 22,
+      "name": "Suraj gupta",
+      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
+      "gender": "female",
+      "departments": [
+        "Finance",
+        "Engineer"
+      ],
+      "salary": 200000,
       "startDate": "2019-12-31T18:30:00.000Z"
     }
   ]

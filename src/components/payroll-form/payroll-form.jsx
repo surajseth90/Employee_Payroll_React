@@ -4,8 +4,7 @@ import profile2 from '../../assets/profile/Ellipse -4.png';
 import profile3 from '../../assets/profile/Ellipse -5.png';
 import profile4 from '../../assets/profile/Ellipse -7.png';
 import './payroll-form.css';
-import logo from '../../assets/images/logo.png';
-import { userParams, Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import EmployeeService from '../../services/employee-service';
 
 const initialState = {
@@ -37,8 +36,10 @@ const initialState = {
         gender: '',
         profilePicture: '',
         startDate: ''
-    }
+    },
 }
+
+
 class PayrollForm extends React.Component {
     constructor(props) {
         super(props)
@@ -169,7 +170,6 @@ class PayrollForm extends React.Component {
     }
     checkStartDate = (startDateValue) => {
         let now = new Date();
-        let difference = Math.abs(now.getTime() - startDateValue.getTime());
         if (startDateValue > now) {
             this.initializeMessage('startDate', 'Start Date is a Futute Date!', '');
         } else {
@@ -208,6 +208,7 @@ class PayrollForm extends React.Component {
         await this.checkGlobalError();
         return (this.state.isError);
     }
+    
     save = async (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -230,27 +231,20 @@ class PayrollForm extends React.Component {
             new EmployeeService().addEmployee(employeeObject)
                 .then(data => {
                     alert("Employee Added Successfully!!!\n" + JSON.stringify(data))
+                    this.props.history.push("home");
                 }).catch(error => {
                     alert("Error while adding Employee!!!\nError : " + error);
-                })
-            this.reset();
+                })            
+               
+
         }
     }
     reset = () => {
-        this.setState({ ...initialState });
+        this.setState({ ...initialState});
     }
     render() {
         return (
             <div className="body">
-                <header className="headerContainer header">
-                    <div className="logoContainer">
-                        <img src={logo} alt="" />
-                        <div>
-                            <span className="emp-text">EMPLOYEE</span><br />
-                            <span className="emp-text emp-payroll">PAYROLL</span>
-                        </div>
-                    </div>
-                </header>
                 <div className="form-content">
                     <form className="form" action="#" onSubmit={this.save} onReset={this.reset}>
                         <div className="form-head">Employee Payroll form</div>
@@ -404,7 +398,9 @@ class PayrollForm extends React.Component {
                         <div className="buttonParent">
                             <Link to='' className="resetButton button cancelButton">Cancel</Link>
                             <div className="submit-reset">
-                                <button className="button submitButton" type="submit" id="submitButton">{this.state.isUpdate ? 'Update' : 'Submit'}</button>
+                               
+                                    <button className="button submitButton" type="submit" id="submitButton" >{this.state.isUpdate ? 'Update' : 'Submit'}</button>
+                                
                                 <button className="resetButton button" type="reset">Reset</button>
                             </div>
                         </div>

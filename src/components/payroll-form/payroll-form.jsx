@@ -4,7 +4,7 @@ import profile2 from '../../assets/profile/Ellipse -4.png';
 import profile3 from '../../assets/profile/Ellipse -5.png';
 import profile4 from '../../assets/profile/Ellipse -7.png';
 import './payroll-form.css';
-import { Link, withRouter } from 'react-router-dom';
+import { useParams, Link, withRouter } from 'react-router-dom';
 import EmployeeService from '../../services/employee-service';
 
 const initialState = {
@@ -74,9 +74,55 @@ class PayrollForm extends React.Component {
                 startDate: ''
             }
         }
+        this.nameChangeHandler = this.nameChangeHandler.bind(this);
+        this.profileChangeHandler = this.profileChangeHandler.bind(this);
+        this.genderChangeHandler = this.genderChangeHandler.bind(this);
+        this.departmentChangeHandler = this.departmentChangeHandler.bind(this);
+        this.salaryChangeHandler = this.salaryChangeHandler.bind(this);
+        this.dayChangeHandler = this.dayChangeHandler.bind(this);
+        this.monthChangeHandler = this.monthChangeHandler.bind(this);
+        this.yearChangeHandler = this.yearChangeHandler.bind(this);
+        this.noteChangeHandler = this.noteChangeHandler.bind(this);
     }
 
+    componentDidMount = () => {
+        let id = this.props.match.params.id;
+        if (id !== undefined && id !== '') {
+            this.getEmployeeById(id);
+        }
+    }
 
+    getEmployeeById = (id) => {
+        new EmployeeService().getEmployeeById(id)
+            .then(responseData => {
+                this.setEmployeeData(responseData.data);
+            }).catch(error => {
+                console.log("Error while fetching employee data by ID :\n" + JSON.stringify(error));
+            })
+    }
+
+    stringifyDate = (date) => {
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        const newDate = !date ? "undefined" : new Date(Date.parse(date)).toLocaleDateString('en-GB', options);
+        return newDate;
+    }
+    setEmployeeData = (employee) => {
+        let dateArray = this.stringifyDate(employee.startDate).split(" ");
+        let employeeDay = (dateArray[0].length === 1) ? '0' + dateArray[0] : dateArray[0];
+        this.setState({
+            id: employee.id,
+            name: employee.name,
+            profilePicture: employee.profilePicture,
+            gender: employee.gender,
+            departments: employee.departments,
+            salary: employee.salary,
+            day: employeeDay,
+            month: dateArray[1],
+            year: dateArray[2],
+            note: employee.note,
+            isUpdate: true
+        });
+    }
 
 
     nameChangeHandler = (event) => {
@@ -208,7 +254,7 @@ class PayrollForm extends React.Component {
         await this.checkGlobalError();
         return (this.state.isError);
     }
-    
+
     save = async (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -228,19 +274,31 @@ class PayrollForm extends React.Component {
                 startDate: this.state.startDate,
                 note: this.state.note
             }
-            new EmployeeService().addEmployee(employeeObject)
-                .then(data => {
-                    alert("Employee Added Successfully!!!\n" + JSON.stringify(data))
-                    this.props.history.push("home");
-                }).catch(error => {
-                    alert("Error while adding Employee!!!\nError : " + error);
-                })            
-               
+            if (this.state.isUpdate) {
+                new EmployeeService().updateEmployee(employeeObject)
+                    .then(responseText => {
+                        alert("Employee Updated Successfully!!!\n" + JSON.stringify(responseText.data));
+                        this.reset();
+                        this.props.history.push("home");
+                    }).catch(error => {
+                        console.log("Error while updating Employee!!!\n" + JSON.stringify(error));
+                    })
+            } else {
+                new EmployeeService().addEmployee(employeeObject)
+                    .then(data => {
+                        alert("Employee Added Successfully!!!\n" + JSON.stringify(data))
+                        this.reset();
+                        this.props.history.push("home");
+                    }).catch(error => {
+                        alert("Error while adding Employee!!!\nError : " + JSON.stringify(error));
+                    })
 
+            }
         }
     }
+
     reset = () => {
-        this.setState({ ...initialState});
+        this.setState({ ...initialState });
     }
     render() {
         return (
@@ -398,9 +456,9 @@ class PayrollForm extends React.Component {
                         <div className="buttonParent">
                             <Link to='' className="resetButton button cancelButton">Cancel</Link>
                             <div className="submit-reset">
-                               
-                                    <button className="button submitButton" type="submit" id="submitButton" >{this.state.isUpdate ? 'Update' : 'Submit'}</button>
-                                
+
+                                <button className="button submitButton" type="submit" id="submitButton" >{this.state.isUpdate ? 'Update' : 'Submit'}</button>
+
                                 <button className="resetButton button" type="reset">Reset</button>
                             </div>
                         </div>

@@ -8,7 +8,13 @@ import profile3 from '../../assets/profile/Ellipse -5.png';
 import profile4 from '../../assets/profile/Ellipse -7.png';
 import { withRouter } from 'react-router-dom';
 
+
 const EmployeeList = (props) => {
+
+    const edit = (id) => {
+        props.history.push(`payroll-form/${id}`);
+    }
+
     return (
         <table id="display" className="table">
             <tbody>
@@ -31,15 +37,18 @@ const EmployeeList = (props) => {
                             <td>{employee.departments.map(dept => (<div className="dept-label">{dept}</div>))}</td>
                             <td> ₹ {employee.salary}</td>
                             <td>{stringifyDate(employee.startDate)}</td>
-                            <td><img src={deleteIcon}  alt="delete" />
-                                <img src={editIcon}  alt="edit" /></td>
+                            <td><img src={deleteIcon} alt="delete" />
+                                <img className="editIcon" src={editIcon} onClick={() => edit(employee.id)} alt="edit" /></td>
                         </tr>
                     ))
                 }
             </tbody>
         </table>
     )
+
+
 }
+
 
 const stringifyDate = (date) => {
     const options = { day: 'numeric', month: 'short', year: 'numeric' };

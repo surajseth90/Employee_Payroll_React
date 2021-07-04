@@ -10,25 +10,21 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            allEmployeeArray:[],
+            allEmployeeArray: [],
             employeeArray: [],
         };
         this.employeeService = new EmployeeService();
     }
 
-
-
     componentDidMount() {
         this.employeeService.getAllEmployees()
             .then(responseData => {
-                  this.setState({allEmployeeArray: responseData.data});
+                this.setState({ allEmployeeArray: responseData.data });
                 this.setState({ employeeArray: responseData.data });
             }).catch(errror => {
                 console.log("Error while fetching Employee List\nError : " + JSON.stringify(errror));
             })
-
     }
-
 
     search = async (event) => {
         let searchName = event.target.value;

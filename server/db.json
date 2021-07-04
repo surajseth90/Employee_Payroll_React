@@ -140,6 +140,17 @@
       ],
       "salary": 200000,
       "startDate": "2019-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 23,
+      "name": "Suraj gupta",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "HR"
+      ],
+      "salary": 200000,
+      "startDate": "2019-12-31T18:30:00.000Z"
     }
   ]
 }

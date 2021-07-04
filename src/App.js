@@ -14,11 +14,13 @@ function App() {
         <Switch>
 
           <Route exact path="/home">
-
             <HomePage />
           </Route>
           <Route exact path="/payroll-form">
             <PayrollForm />
+            <Route exact path="/payroll-form/:id">
+              <PayrollForm />
+            </Route>
           </Route>
           <Route exact path="">
             <Redirect exact from="/" to="/home" />

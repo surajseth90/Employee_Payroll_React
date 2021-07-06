@@ -4,7 +4,7 @@ import profile2 from '../../assets/profile/Ellipse -4.png';
 import profile3 from '../../assets/profile/Ellipse -5.png';
 import profile4 from '../../assets/profile/Ellipse -7.png';
 import './payroll-form.css';
-import { useParams, Link, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import EmployeeService from '../../services/employee-service';
 
 const initialState = {
@@ -15,8 +15,8 @@ const initialState = {
     salary: 200000,
     day: '1',
     month: 'Jan',
-    year: '2020',
-    startDate: new Date("1 Jan 2020"),
+    year: '2021',
+    startDate: new Date("1 Jan 2021"),
     notes: '',
 
     id: '',
@@ -36,7 +36,7 @@ const initialState = {
         gender: '',
         profilePicture: '',
         startDate: ''
-    },
+    }
 }
 
 
@@ -51,8 +51,8 @@ class PayrollForm extends React.Component {
             salary: 200000,
             day: '1',
             month: 'Jan',
-            year: '2020',
-            startDate: new Date("1 Jan 2020"),
+            year: '2021',
+            startDate: new Date("1 Jan 2021"),
             notes: '',
 
             id: '',
@@ -73,6 +73,7 @@ class PayrollForm extends React.Component {
                 profilePicture: '',
                 startDate: ''
             }
+
         }
         this.nameChangeHandler = this.nameChangeHandler.bind(this);
         this.profileChangeHandler = this.profileChangeHandler.bind(this);
@@ -82,7 +83,7 @@ class PayrollForm extends React.Component {
         this.dayChangeHandler = this.dayChangeHandler.bind(this);
         this.monthChangeHandler = this.monthChangeHandler.bind(this);
         this.yearChangeHandler = this.yearChangeHandler.bind(this);
-        this.noteChangeHandler = this.noteChangeHandler.bind(this);
+        this.notesChangeHandler = this.notesChangeHandler.bind(this);
     }
 
     componentDidMount = () => {
@@ -94,10 +95,11 @@ class PayrollForm extends React.Component {
 
     getEmployeeById = (id) => {
         new EmployeeService().getEmployeeById(id)
-            .then(responseData => {
+            .then(response => {
+                let responseData = response.data;
                 this.setEmployeeData(responseData.data);
             }).catch(error => {
-                console.log("Error while fetching employee data by ID :\n" + JSON.stringify(error));
+                console.log(error);
             })
     }
 
@@ -110,20 +112,19 @@ class PayrollForm extends React.Component {
         let dateArray = this.stringifyDate(employee.startDate).split(" ");
         let employeeDay = (dateArray[0].length === 1) ? '0' + dateArray[0] : dateArray[0];
         this.setState({
-            id: employee.id,
+            id: employee.empId,
             name: employee.name,
-            profilePicture: employee.profilePicture,
+            profilePicture: employee.profilePic,
             gender: employee.gender,
-            departments: employee.departments,
+            departments: employee.department,
             salary: employee.salary,
             day: employeeDay,
             month: dateArray[1],
             year: dateArray[2],
-            note: employee.note,
+            notes: employee.note,
             isUpdate: true
         });
     }
-
 
     nameChangeHandler = (event) => {
         this.setState({ name: event.target.value });
@@ -156,21 +157,26 @@ class PayrollForm extends React.Component {
         }
         this.checkDepartment(this.state.departments);
     }
+
     salaryChangeHandler = (event) => {
         this.setState({ salary: event.target.value });
     }
+
     dayChangeHandler = (event) => {
         this.setState({ day: event.target.value });
         this.setStartDate(event.target.value, this.state.month, this.state.year);
     }
+
     monthChangeHandler = (event) => {
         this.setState({ month: event.target.value });
         this.setStartDate(this.state.day, event.target.value, this.state.year);
     }
+
     yearChangeHandler = (event) => {
         this.setState({ year: event.target.value });
         this.setStartDate(this.state.day, this.state.month, event.target.value);
     }
+
     notesChangeHandler = (event) => {
         this.setState({ notes: event.target.value });
     }
@@ -195,6 +201,7 @@ class PayrollForm extends React.Component {
             }
         }));
     }
+
     checkName = (nameValue) => {
         if (nameValue.length === 0) {
             this.initializeMessage('name', '', '');
@@ -207,6 +214,7 @@ class PayrollForm extends React.Component {
             }
         }
     }
+
     checkProfilePicture = (profilePictureValue) => {
         if (profilePictureValue.length === 0) {
             this.initializeMessage('profilePicture', 'Profile Picture cannot be Blank!', '');
@@ -214,6 +222,7 @@ class PayrollForm extends React.Component {
             this.initializeMessage('profilePicture', '', '✓');
         }
     }
+
     checkStartDate = (startDateValue) => {
         let now = new Date();
         if (startDateValue > now) {
@@ -222,6 +231,7 @@ class PayrollForm extends React.Component {
             this.initializeMessage('startDate', '', '✓');
         }
     }
+
     checkDepartment = (departmentsValue) => {
         if (departmentsValue.length === 0) {
             this.initializeMessage('department', 'Employee must belong to atleast one Department!', '');
@@ -229,6 +239,7 @@ class PayrollForm extends React.Component {
             this.initializeMessage('department', '', '✓');
         }
     }
+
     checkGender = (genderValue) => {
         if (genderValue.length === 0) {
             this.initializeMessage('gender', 'Gender is a Required Field!', '');
@@ -236,6 +247,7 @@ class PayrollForm extends React.Component {
             this.initializeMessage('gender', '', '✓');
         }
     }
+
     checkGlobalError = () => {
         if (this.state.error.name.length === 0 && this.state.error.department.length === 0 && this.state.error.gender.length === 0
             && this.state.error.profilePicture.length === 0 && this.state.error.startDate.length === 0) {
@@ -265,34 +277,31 @@ class PayrollForm extends React.Component {
                 break saveOperation;
             }
             let employeeObject = {
-                id: this.state.id,
                 name: this.state.name,
                 profilePicture: this.state.profilePicture,
                 gender: this.state.gender,
                 departments: this.state.departments,
                 salary: this.state.salary,
                 startDate: this.state.startDate,
-                note: this.state.note
+                note: this.state.notes
             }
             if (this.state.isUpdate) {
                 new EmployeeService().updateEmployee(employeeObject)
-                    .then(responseText => {
-                        alert("Employee Updated Successfully!!!\n" + JSON.stringify(responseText.data));
+                    .then(responseDTO => {
+                        let responseText = responseDTO.data;
                         this.reset();
                         this.props.history.push("home");
                     }).catch(error => {
-                        console.log("Error while updating Employee!!!\n" + JSON.stringify(error));
+                        console.log(error);
                     })
             } else {
                 new EmployeeService().addEmployee(employeeObject)
-                    .then(data => {
-                        alert("Employee Added Successfully!!!\n" + JSON.stringify(data))
+                    .then(responseDTO => {
                         this.reset();
                         this.props.history.push("home");
                     }).catch(error => {
-                        alert("Error while adding Employee!!!\nError : " + JSON.stringify(error));
+                        console.log(error);
                     })
-
             }
         }
     }
@@ -359,24 +368,24 @@ class PayrollForm extends React.Component {
                             <label className="label text" htmlFor="department">Department</label>
                             <div>
                                 <label>
-                                    <input class="checkbox" type="checkbox" id="hr" name="department" value="HR" onChange={this.departmentChangeHandler} />
-                                    <label class="text" for="hr">HR</label>
+                                    <input className="checkbox" type="checkbox" id="hr" name="department" value="HR" onChange={this.departmentChangeHandler} />
+                                    <label className="text" htmlFor="hr">HR</label>
                                 </label>
                                 <label>
-                                    <input class="checkbox" type="checkbox" id="sales" name="department" value="Sales" onChange={this.departmentChangeHandler} />
-                                    <label class="text" for="sales">Sales</label>
+                                    <input className="checkbox" type="checkbox" id="sales" name="department" value="Sales" onChange={this.departmentChangeHandler} />
+                                    <label className="text" htmlFor="sales">Sales</label>
                                 </label>
                                 <label>
-                                    <input class="checkbox" type="checkbox" id="finance" name="department" value="Finance" onChange={this.departmentChangeHandler} />
-                                    <label class="text" for="finance">Finance</label>
+                                    <input className="checkbox" type="checkbox" id="finance" name="department" value="Finance" onChange={this.departmentChangeHandler} />
+                                    <label className="text" htmlFor="finance">Finance</label>
                                 </label>
                                 <label>
-                                    <input class="checkbox" type="checkbox" id="engineer" name="department" value="Engineer" onChange={this.departmentChangeHandler} />
-                                    <label class="text" for="engineer">Engineer</label>
+                                    <input className="checkbox" type="checkbox" id="engineer" name="department" value="Engineer" onChange={this.departmentChangeHandler} />
+                                    <label className="text" htmlFor="engineer">Engineer</label>
                                 </label>
                                 <label>
-                                    <input class="checkbox" type="checkbox" id="others" name="department" value="Others" onChange={this.departmentChangeHandler} />
-                                    <label class="text" for="others">Others</label>
+                                    <input className="checkbox" type="checkbox" id="others" name="department" value="Others" onChange={this.departmentChangeHandler} />
+                                    <label className="text" htmlFor="others">Others</label>
                                 </label>
                             </div>
                             <valid-message className="valid-department" htmlFor="department">{this.state.valid.department}</valid-message>
@@ -431,7 +440,7 @@ class PayrollForm extends React.Component {
                                     <option value="Apr">April</option>
                                     <option value="May">May</option>
                                     <option value="Jun">June</option>
-                                    <option value="July">July</option>
+                                    <option value="Jul">July</option>
                                     <option value="Aug">August</option>
                                     <option value="Sep">September</option>
                                     <option value="Oct">October</option>
@@ -439,6 +448,7 @@ class PayrollForm extends React.Component {
                                     <option value="Dec">December</option>
                                 </select>
                                 <select onChange={this.yearChangeHandler} value={this.state.year} id="year" name="year">
+                                    <option value="2021">2021</option>
                                     <option value="2020">2020</option>
                                     <option value="2019">2019</option>
                                     <option value="2018">2018</option>

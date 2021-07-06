@@ -11,18 +11,23 @@ class HomePage extends React.Component {
         super(props);
         this.state = {
             allEmployeeArray: [],
-            employeeArray: [],
+            employeeArray: []
         };
         this.employeeService = new EmployeeService();
     }
 
     componentDidMount() {
+        this.getEmployee();
+    }
+
+    getEmployee = () => {
         this.employeeService.getAllEmployees()
-            .then(responseData => {
+            .then(ResponseDTO => {
+                let responseData = ResponseDTO.data;
                 this.setState({ allEmployeeArray: responseData.data });
                 this.setState({ employeeArray: responseData.data });
-            }).catch(errror => {
-                console.log("Error while fetching Employee List\nError : " + JSON.stringify(errror));
+            }).catch(error => {
+                console.log(error);
             })
     }
 

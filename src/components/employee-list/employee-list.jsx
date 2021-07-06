@@ -9,23 +9,22 @@ import profile4 from '../../assets/profile/Ellipse -7.png';
 import { withRouter } from 'react-router-dom';
 import EmployeeService from '../../services/employee-service';
 
-
 const EmployeeList = (props) => {
 
+    console.log(props.employeeArray.department);
     const edit = (id) => {
         props.history.push(`payroll-form/${id}`);
     }
 
-    const remove = (id) => {        
-          new EmployeeService().deleteEmployee(id)
-          .then(responseText => {
-            alert("Employee deleted successfully!!!");
-        //    props.history.push("/home")
-          }).catch(error => {
-            alert("Error occurred while deleting the Employee!!!");
-          })
-         
-      }
+    const remove = (id) => {
+        new EmployeeService().deleteEmployee(id)
+            .then(responseDTO => {
+                window.location.reload();
+            }).catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <table id="display" className="table">
             <tbody>
@@ -40,26 +39,28 @@ const EmployeeList = (props) => {
                     <th>Actions</th>
                 </tr>
                 {
-                    props.employeeArray.map((employee) => (
-                        <tr key={employee.id}>
+                    props.employeeArray && props.employeeArray.map((employee) => (
+
+                        <tr key={employee.empId}>
                             <td><img src={handleProfilePicture(employee.profilePicture)} alt="" /></td>
                             <td>{employee.name}</td>
                             <td>{employee.gender}</td>
-                            <td>{employee.departments.map(dept => (<div className="dept-label">{dept}</div>))}</td>
+                            <td>{employee.department && employee.department.map(dept => (<div className="dept-label">{dept}</div>))}</td>
                             <td> ₹ {employee.salary}</td>
                             <td>{stringifyDate(employee.startDate)}</td>
-                            <td><img className="deleteIcon" src={deleteIcon} onClick={() => remove(employee.id)} alt="delete" />
-                                <img className="editIcon" src={editIcon} onClick={() => edit(employee.id)} alt="edit" /></td>
+                            <td><img className="deleteIcon" src={deleteIcon} onClick={() => remove(employee.empId)} alt="delete" />
+                                <img className="editIcon" src={editIcon} onClick={() => edit(employee.empId)} alt="edit" />
+                            </td>
                         </tr>
-                    ))
+
+                    )
+                    )
                 }
+
             </tbody>
         </table>
     )
-
-
 }
-
 
 const stringifyDate = (date) => {
     const options = { day: 'numeric', month: 'short', year: 'numeric' };

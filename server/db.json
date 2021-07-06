@@ -1,54 +1,10 @@
 {
   "employee": [
     {
-      "id": 11,
+      "id": 21,
       "name": "Suraj gupta",
       "profilePicture": "../../assets/profile-images/Ellipse -3.png",
       "gender": "male",
-      "departments": [
-        "Sales"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 13,
-      "name": "Sonali rathore",
-      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
-      "gender": "female",
-      "departments": [
-        "Engineer"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 14,
-      "name": "Rohit rathore",
-      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
-      "gender": "female",
-      "departments": [
-        "Finance"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 17,
-      "name": "Kirti gupta",
-      "profilePicture": "../../assets/profile-images/Ellipse -7.png",
-      "gender": "female",
-      "departments": [
-        "Finance"
-      ],
-      "salary": 200000,
-      "startDate": "2019-12-31T18:30:00.000Z"
-    },
-    {
-      "id": 18,
-      "name": "Pooja gupta",
-      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
-      "gender": "female",
       "departments": [
         "Others"
       ],
@@ -56,27 +12,37 @@
       "startDate": "2019-12-31T18:30:00.000Z"
     },
     {
-      "id": 19,
-      "name": "Versha",
-      "profilePicture": "../../assets/profile-images/Ellipse -4.png",
-      "gender": "female",
+      "id": 24,
+      "name": "Suraj",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
       "departments": [
-        "Sales"
+        "HR"
       ],
       "salary": 200000,
       "startDate": "2019-12-31T18:30:00.000Z"
     },
     {
-      "id": 20,
-      "name": "Raju seth",
+      "id": 25,
+      "name": "Rohit rathore",
       "profilePicture": "../../assets/profile-images/Ellipse -3.png",
       "gender": "male",
       "departments": [
-        "Sales",
         "Finance"
       ],
-      "salary": "1000000",
-      "startDate": "2019-12-31T18:30:00.000Z"
+      "salary": "960800",
+      "startDate": "2020-12-31T18:30:00.000Z"
+    },
+    {
+      "id": 26,
+      "name": "Rahul",
+      "profilePicture": "../../assets/profile-images/Ellipse -3.png",
+      "gender": "male",
+      "departments": [
+        "HR"
+      ],
+      "salary": "577200",
+      "startDate": "2020-12-31T18:30:00.000Z"
     }
   ]
 }

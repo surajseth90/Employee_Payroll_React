@@ -11,7 +11,7 @@ import EmployeeService from '../../services/employee-service';
 
 const EmployeeList = (props) => {
 
-    console.log(props.employeeArray.department);
+
     const edit = (id) => {
         props.history.push(`payroll-form/${id}`);
     }
@@ -42,7 +42,7 @@ const EmployeeList = (props) => {
                     props.employeeArray && props.employeeArray.map((employee) => (
 
                         <tr key={employee.empId}>
-                            <td><img src={handleProfilePicture(employee.profilePicture)} alt="" /></td>
+                            <td><img src={handleProfilePicture(employee.profilePic)} alt="" /></td>
                             <td>{employee.name}</td>
                             <td>{employee.gender}</td>
                             <td>{employee.department && employee.department.map(dept => (<div className="dept-label">{dept}</div>))}</td>
@@ -69,23 +69,24 @@ const stringifyDate = (date) => {
 }
 
 const profiles = ["../../assets/profile/Ellipse -3.png", "../../assets/profile/Ellipse -4.png",
-    "../../assets/profile/Ellipse -5.png", "../../assets/profile/Ellipse -7.png"];
+"../../assets/profile/Ellipse -5.png", "../../assets/profile/Ellipse -7.png"];
 
-const handleProfilePicture = (profilePicturePath) => {
-    let index;
-    for (let i = 0; i < profiles.length; i++) {
-        if (profiles[i] === profilePicturePath) {
-            index = i;
-        }
-    }
-    switch (index) {
-        case 0: return profile1;
-        case 1: return profile2;
-        case 2: return profile3;
-        case 3: return profile4;
-        default: return null;
 
+const handleProfilePicture = (path) => {
+    let index=1;
+    for( let i = 0; i < profiles.length; i++) {
+      if(profiles[i].localeCompare(path)===0) {
+        index = i;
+      }
     }
-}
+    switch(index) {
+      case 0 : return profile1;
+      case 1 : return profile2;
+      case 2 : return profile3;
+      case 3 : return profile4;
+      default : return null;
+      
+    }
+  }
 
 export default withRouter(EmployeeList);
